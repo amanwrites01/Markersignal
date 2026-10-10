@@ -1,0 +1,260 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/*
+ * MAKERSIGNAL design tokens.
+ * Forest #14241C · Deep green #20382B · Ivory #F7F6F0 · Acid lime #D3F36B
+ * White #FFFFFF · Muted gray #777D77 (decorative only — 3.9:1 on ivory)
+ * Border #E5E7E1. Small text uses --ink-muted (#5E645E, 5.6:1 on ivory) for AA.
+ * Lime is only placed on forest/deep green or behind forest text — never as text on light surfaces.
+ */
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+  --font-heading: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+
+  --color-forest: var(--forest);
+  --color-deep: var(--deep);
+  --color-ivory: var(--ivory);
+  --color-lime: #d3f36b;
+  --color-lime-soft: var(--lime-soft);
+  --color-gray-brand: #777d77;
+  --color-ink-muted: var(--ink-muted);
+  --color-line: var(--line);
+  --color-success: #2f6b3f;
+  --color-warning: #8a5a00;
+  --color-warning-soft: var(--warning-soft);
+  --color-danger: #b42318;
+  --color-danger-soft: var(--danger-soft);
+
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+  --background: #f7f6f0;
+  --foreground: #14241c;
+  --card: #ffffff;
+  --card-foreground: #14241c;
+  --popover: #ffffff;
+  --popover-foreground: #14241c;
+  --primary: #14241c;
+  --primary-foreground: #f7f6f0;
+  --secondary: #eceee6;
+  --secondary-foreground: #14241c;
+  --muted: #eef0e9;
+  --muted-foreground: #5e645e;
+  --accent: #eef9c8;
+  --accent-foreground: #14241c;
+  --destructive: #b42318;
+  --border: #e5e7e1;
+  --input: #d9dcd3;
+  --ring: #20382b;
+  --radius: 0.75rem;
+
+  --forest: #14241c;
+  --deep: #20382b;
+  --ivory: #f7f6f0;
+  --lime: #d3f36b;
+  --lime-soft: #eef9c8;
+  --ink-muted: #5e645e;
+  --line: #e5e7e1;
+  --warning-soft: #fdf3dc;
+  --danger-soft: #fdecea;
+
+  --chart-1: #14241c;
+  --chart-2: #4f7a5d;
+  --chart-3: #9bbf6a;
+  --chart-4: #d3f36b;
+  --chart-5: #777d77;
+  --sidebar: #14241c;
+  --sidebar-foreground: #f7f6f0;
+  --sidebar-primary: #d3f36b;
+  --sidebar-primary-foreground: #14241c;
+  --sidebar-accent: #20382b;
+  --sidebar-accent-foreground: #f7f6f0;
+  --sidebar-border: #20382b;
+  --sidebar-ring: #d3f36b;
+}
+
+.dark {
+  --background: #0b1410;
+  --foreground: #f0f3eb;
+  --card: #13221b;
+  --card-foreground: #f0f3eb;
+  --popover: #13221b;
+  --popover-foreground: #f0f3eb;
+  --primary: #d3f36b;
+  --primary-foreground: #14241c;
+  --secondary: #1a2c23;
+  --secondary-foreground: #f0f3eb;
+  --muted: #17271f;
+  --muted-foreground: #94a197;
+  --accent: #1f3529;
+  --accent-foreground: #d3f36b;
+  --destructive: #f04438;
+  --border: #1e3328;
+  --input: #233c2f;
+  --ring: #d3f36b;
+
+  --forest: #f0f3eb;
+  --deep: #1a2c23;
+  --ivory: #0b1410;
+  --lime: #d3f36b;
+  --lime-soft: #1f3529;
+  --ink-muted: #94a197;
+  --line: #1e3328;
+  --warning-soft: #2b220d;
+  --danger-soft: #2e1210;
+
+  --chart-1: #d3f36b;
+  --chart-2: #9bbf6a;
+  --chart-3: #4f7a5d;
+  --chart-4: #777d77;
+  --chart-5: #f0f3eb;
+  --sidebar: #080f0c;
+  --sidebar-foreground: #f0f3eb;
+  --sidebar-primary: #d3f36b;
+  --sidebar-primary-foreground: #14241c;
+  --sidebar-accent: #13221b;
+  --sidebar-accent-foreground: #f0f3eb;
+  --sidebar-border: #1a2c23;
+  --sidebar-ring: #d3f36b;
+}
+
+.dark .bg-white {
+  background-color: var(--card);
+}
+
+.dark .bg-ivory {
+  background-color: var(--background);
+}
+
+.dark .bg-ivory\/90 {
+  background-color: rgba(11, 20, 16, 0.9);
+}
+
+.dark .border-line {
+  border-color: var(--line);
+}
+
+.dark .text-forest {
+  color: var(--foreground);
+}
+
+.dark input:not([type="checkbox"]):not([type="radio"]),
+.dark textarea,
+.dark select {
+  background-color: var(--card);
+  color: var(--foreground);
+  border-color: var(--border);
+}
+
+.on-dark {
+  --forest: #14241c;
+  --ivory: #f7f6f0;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  html {
+    @apply font-sans;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  /* Visible keyboard focus everywhere, including links. */
+  :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+  .on-dark :where(a, button, input, select, textarea, [tabindex]):focus-visible {
+    outline-color: #d3f36b;
+  }
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+    letter-spacing: -0.02em;
+  }
+  p {
+    text-wrap: pretty;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.01ms !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .container-page {
+    @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  }
+  .eyebrow {
+    @apply text-xs font-semibold tracking-[0.14em] text-ink-muted uppercase;
+  }
+  .display {
+    @apply text-4xl leading-[1.02] font-semibold tracking-[-0.035em] sm:text-6xl lg:text-7xl;
+  }
+  .h-page {
+    @apply text-2xl font-semibold tracking-[-0.025em] sm:text-3xl;
+  }
+  .h-section {
+    @apply text-lg font-semibold tracking-[-0.015em];
+  }
+  .meta {
+    @apply text-sm text-ink-muted;
+  }
+  .prose-body {
+    @apply max-w-[68ch] text-[15px] leading-7 text-foreground/90;
+  }
+}
