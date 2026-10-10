@@ -20,7 +20,6 @@ function GoogleMark() {
 /** "Continue with Google". Works once Google OAuth keys are configured in Supabase Auth. */
 export function GoogleButton({ next = "/onboarding" }: { next?: string }) {
   const [busy, setBusy] = useState(false);
-  const disabled = process.env.NEXT_PUBLIC_GOOGLE_AUTH_ENABLED === "false";
   return (
     <Button
       type="button"
@@ -29,10 +28,6 @@ export function GoogleButton({ next = "/onboarding" }: { next?: string }) {
       className="w-full bg-white dark:bg-card border-line text-forest dark:text-ivory hover:bg-forest/5 dark:hover:bg-white/10"
       disabled={busy}
       onClick={async () => {
-        if (disabled) {
-          toast.info("Google sign-in is disabled. Use email for now.");
-          return;
-        }
         setBusy(true);
         const { error } = await getBrowserClient().auth.signInWithOAuth({
           provider: "google",
