@@ -26,7 +26,7 @@ export function GoogleButton({ next = "/onboarding" }: { next?: string }) {
       type="button"
       variant="outline"
       size="lg"
-      className="w-full bg-white"
+      className="w-full bg-white dark:bg-card border-line text-forest dark:text-ivory hover:bg-forest/5 dark:hover:bg-white/10"
       disabled={busy}
       onClick={async () => {
         if (!enabled) {

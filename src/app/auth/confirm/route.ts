@@ -14,6 +14,14 @@ export async function GET(request: NextRequest) {
   const code = searchParams.get("code");
   const tokenHash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
+  const oauthError = searchParams.get("error");
+
+  if (oauthError) {
+    const failure = new URL("/auth/login", origin);
+    failure.searchParams.set("error", "link");
+    return NextResponse.redirect(failure);
+  }
+
   const supabase = await createClient();
 
   if (code) {
